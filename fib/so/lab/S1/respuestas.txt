@@ -1,0 +1,9 @@
+1) $ mkdir S1 S2 S3 S4 S5
+2) ll (es lo mismo que $ ls -l, ya que si ejecutamos $ type ll, nos dice: "ll is aliased to `ls -alF'")
+3) Se tiene que ejecutar $ ls -la 
+    (-a muestra ficheros ocultos(".*") 
+    y -l que da un formato ampliado con más información).
+4) Se tiene que activar la opción "Show Hidden Files"
+5)  $ rm -rf directorio
+    $ ls | grep directorio
+    $ mkdir directorio
