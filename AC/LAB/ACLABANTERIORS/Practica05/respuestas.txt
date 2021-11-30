@@ -1,0 +1,9 @@
+3) 14.595.322 instrucciones
+
+4) 16.879.804 instrucciones
+
+5) 	58772 HITS
+	4228  MISSES
+
+6)  59432 HITS
+	3068  MISSES

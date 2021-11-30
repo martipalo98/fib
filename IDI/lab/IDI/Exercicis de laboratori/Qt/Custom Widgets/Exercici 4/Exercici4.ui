@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Exercici4</class>
+ <widget class="QWidget" name="Exercici4">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>232</width>
+    <height>147</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Exercici4</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="MyLineEdit" name="lineEdit"/>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QPushButton" name="Shift">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Shift</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="MyPushButton" name="A">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>25</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>a</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="MyPushButton" name="E">
+       <property name="maximumSize">
+        <size>
+         <width>25</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>e</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="MyPushButton" name="I">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>25</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>i</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="MyPushButton" name="O">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>25</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>o</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="MyPushButton" name="U">
+       <property name="maximumSize">
+        <size>
+         <width>25</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>u</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>298</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exitButton">
+       <property name="maximumSize">
+        <size>
+         <width>50</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>&amp;Sortir</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyPushButton</class>
+   <extends>QPushButton</extends>
+   <header>MyPushButton.h</header>
+   <slots>
+    <signal>sendVowel(QString)</signal>
+    <slot>toggleVowels()</slot>
+    <slot>writeVowel()</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>MyLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>MyLineEdit.h</header>
+   <slots>
+    <slot>appendText(QString)</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>exitButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Exercici4</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>180</x>
+     <y>134</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>163</x>
+     <y>90</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Shift</sender>
+   <signal>pressed()</signal>
+   <receiver>A</receiver>
+   <slot>toggleVowels()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>84</x>
+     <y>33</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Shift</sender>
+   <signal>pressed()</signal>
+   <receiver>E</receiver>
+   <slot>toggleVowels()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>112</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Shift</sender>
+   <signal>pressed()</signal>
+   <receiver>I</receiver>
+   <slot>toggleVowels()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>140</x>
+     <y>40</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Shift</sender>
+   <signal>pressed()</signal>
+   <receiver>O</receiver>
+   <slot>toggleVowels()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>38</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>170</x>
+     <y>41</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Shift</sender>
+   <signal>pressed()</signal>
+   <receiver>U</receiver>
+   <slot>toggleVowels()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>196</x>
+     <y>44</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>A</sender>
+   <signal>pressed()</signal>
+   <receiver>A</receiver>
+   <slot>writeVowel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>84</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>84</x>
+     <y>47</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>A</sender>
+   <signal>sendVowel(QString)</signal>
+   <receiver>lineEdit</receiver>
+   <slot>appendText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>85</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>85</x>
+     <y>17</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>E</sender>
+   <signal>pressed()</signal>
+   <receiver>E</receiver>
+   <slot>writeVowel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>110</x>
+     <y>37</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>107</x>
+     <y>44</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>E</sender>
+   <signal>sendVowel(QString)</signal>
+   <receiver>lineEdit</receiver>
+   <slot>appendText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>114</x>
+     <y>41</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>113</x>
+     <y>16</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>I</sender>
+   <signal>pressed()</signal>
+   <receiver>I</receiver>
+   <slot>writeVowel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>146</x>
+     <y>41</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>151</x>
+     <y>33</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>I</sender>
+   <signal>sendVowel(QString)</signal>
+   <receiver>lineEdit</receiver>
+   <slot>appendText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>137</x>
+     <y>34</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>137</x>
+     <y>18</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>O</sender>
+   <signal>pressed()</signal>
+   <receiver>O</receiver>
+   <slot>writeVowel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>171</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>176</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>O</sender>
+   <signal>sendVowel(QString)</signal>
+   <receiver>lineEdit</receiver>
+   <slot>appendText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>179</x>
+     <y>37</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>182</x>
+     <y>16</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>U</sender>
+   <signal>pressed()</signal>
+   <receiver>U</receiver>
+   <slot>writeVowel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>206</x>
+     <y>43</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>203</x>
+     <y>46</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>U</sender>
+   <signal>sendVowel(QString)</signal>
+   <receiver>lineEdit</receiver>
+   <slot>appendText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>212</x>
+     <y>38</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>212</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

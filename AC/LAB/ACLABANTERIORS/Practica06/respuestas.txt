@@ -1,0 +1,6 @@
+3)  Comparando los tiempos de ejecución de las dos políticas, vemos que son parecidos (36047 vs 37193 ms)
+	Pero en cambio, añadiendo un contador de escrituras a MP, vemos que hay una gran diferencia:
+		Write Through + Write NO Allocate: 15625 escrituras a MP.
+		Copy Back + Write Allocate: 454 escrituras a MP.
+
+	Como una escritura a MP es muy costosa, vemos que la política Copy Back + Write Allocate es mucho más eficaz para el test 2.
