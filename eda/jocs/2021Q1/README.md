@@ -1,4 +1,3 @@
-# README:
 ### Passos: 
 - Copiar [AINull.cc](AIDummy.cc) a [AISherlokHumus.cc](AISherlokHumus.cc) {Canviar per AI**NOM JUGADOR**.cc}.
 - Modificar ` #define PLAYER_NAME `**`NOMJUGADOR`**` `
