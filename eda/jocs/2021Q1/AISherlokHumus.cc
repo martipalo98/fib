@@ -75,12 +75,12 @@ struct PLAYER_NAME : public Player {
         int jact = pq_top.second.first.j + CJ[i];
         if (pos_ok(iact, jact) && !visitats[iact][jact]){
           visitats[iact][jact] = true;
-          if (primer){
+          /*if (primer){
             if(i==0) pq_top.second.second = Down;
             if(i==1) pq_top.second.second = Right;
             if(i==2) pq_top.second.second = Up;
             if(i==3) pq_top.second.second = Left;
-          }
+          }*/
 
           if ((cell(iact,jact).type != Building) && (citizen(cell(iact,jact).id).player != me())){ 
             if (type == Builder){ //IF BUILDER
