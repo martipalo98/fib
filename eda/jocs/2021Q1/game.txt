@@ -1,0 +1,4 @@
+info: player Dummy got score 435
+info: player Dummy got score 1070
+info: player Dummy got score 720
+info: player Dummy got score 980
