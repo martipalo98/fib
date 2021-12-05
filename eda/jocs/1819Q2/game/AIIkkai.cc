@@ -5,7 +5,7 @@
  * Write the name of your player and save this file
  * with the same name and .cc extension.
  */
-#define PLAYER_NAME Ikkai27
+#define PLAYER_NAME Ikkai
 
 
 struct PLAYER_NAME : public Player {
@@ -152,6 +152,7 @@ int tornar_a_reina(Pos a){
               if(i==2)ara.second.second = Up;
               if(i==3)ara.second.second = Left;
             }
+            if(cell(x_act,y_act).type != Water) continue;
             if(not Soldats_enemics[x_act][y_act] and cell(x_act,y_act).type != Water and cell(x_act,y_act).id == -1 and not M[x_act][y_act] and cell(x_act, y_act).bonus == None){
               if(Reina[x_act][y_act]){
                 if (ara.second.second == Up){

@@ -1,8 +1,10 @@
+Action.o: Action.cc Action.hh Structs.hh Utils.hh Defs.hh
 AIDemo.o: AIDemo.cc Player.hh Info.hh Settings.hh Structs.hh Utils.hh \
+ Defs.hh State.hh Action.hh Random.hh Registry.hh
+AIIkkai.o: AIIkkai.cc Player.hh Info.hh Settings.hh Structs.hh Utils.hh \
  Defs.hh State.hh Action.hh Random.hh Registry.hh
 AINull.o: AINull.cc Player.hh Info.hh Settings.hh Structs.hh Utils.hh \
  Defs.hh State.hh Action.hh Random.hh Registry.hh
-Action.o: Action.cc Action.hh Structs.hh Utils.hh Defs.hh
 Board.o: Board.cc Board.hh Info.hh Settings.hh Structs.hh Utils.hh \
  Defs.hh State.hh Action.hh Random.hh
 Game.o: Game.cc Game.hh Player.hh Info.hh Settings.hh Structs.hh Utils.hh \
@@ -18,5 +20,3 @@ Settings.o: Settings.cc Settings.hh Structs.hh Utils.hh Defs.hh
 State.o: State.cc State.hh Structs.hh Utils.hh Defs.hh
 Structs.o: Structs.cc Structs.hh Utils.hh Defs.hh
 Utils.o: Utils.cc Utils.hh Defs.hh
-program.o: program.cc Player.hh Info.hh Settings.hh Structs.hh Utils.hh \
- Defs.hh State.hh Action.hh Random.hh Registry.hh

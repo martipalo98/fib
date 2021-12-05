@@ -1,0 +1,4 @@
+info: player SherlokHumus got score 15
+info: player Dummy got score 25
+info: player Dummy got score 635
+info: player Dummy got score 690
