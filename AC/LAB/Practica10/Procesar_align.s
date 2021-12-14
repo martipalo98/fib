@@ -22,16 +22,15 @@ for:
 	cmp %eax, %edx
 	jle fifor
 
-	movdqu (%eax), %xmm0
+	movdqa (%eax), %xmm0
 	paddb %xmm0, %xmm0
 	paddb %xmm0, %xmm0
 	paddb %xmm0, %xmm0
-	paddb %xmm0, %xmm0
-	movdqu %xmm0, (%ebx)
+	paddb %xmm0, %xmm0	
+	movdqa %xmm0, (%ebx)
 
 	addl $16, %eax
 	addl $16, %ebx
-
 	jmp for
 fifor:
 

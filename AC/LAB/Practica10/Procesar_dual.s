@@ -18,7 +18,35 @@ procesar:
 	movl 12(%ebp), %ebx
 	addl %eax, %edx
 
-for:
+  	movl %eax, %ecx
+  	andl $0xF, %ecx
+  	cmp $0, %ecx
+  	jne unaligned
+
+  	movl %ebx, %ecx
+  	andl $0xF, %ecx
+  	cmp $0, %ecx
+  	jne unaligned
+	  
+aligned:
+	cmp %eax, %edx
+	jle fifor
+
+	movdqa (%eax), %xmm0
+
+	paddb %xmm0, %xmm0
+	paddb %xmm0, %xmm0
+	paddb %xmm0, %xmm0
+	paddb %xmm0, %xmm0
+	
+	movdqa %xmm0, (%ebx)
+
+	addl $16, %eax
+	addl $16, %ebx
+
+	jmp aligned
+
+unaligned:
 	cmp %eax, %edx
 	jle fifor
 
@@ -32,7 +60,8 @@ for:
 	addl $16, %eax
 	addl $16, %ebx
 
-	jmp for
+	jmp unaligned
+
 fifor:
 
 

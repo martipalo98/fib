@@ -12,24 +12,6 @@ procesar:
 
 # Aqui has de introducir el codigo
 
-    movl 8(%ebp), %eax
-    movl 12(%ebp), %ebx
-    movl 16(%ebp), %ecx
-    imul %ecx, %ecx
-    addl %eax, %ecx
-
-for:
-	cmp %eax, %ecx
-    jle fifor
-
-    movb (%eax), %dl
-    salb $4, %dl
-    movb %dl, (%ebx)
-
-    incl %eax
-    incl %ebx
-    jmp for
-fifor:  
 
 # El final de la rutina ya esta programado
 
@@ -39,4 +21,3 @@ fifor:
 	movl %ebp,%esp
 	popl %ebp
 	ret
-

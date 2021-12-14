@@ -88,6 +88,7 @@ void main() {
   t1 = GetTime();
   
   leer(mat1,"in.pgm",&info);
+  
   for (i=0;i<M;i++)  
     procesar(&mat1[0][0],&mat2[0][0],N);
   
