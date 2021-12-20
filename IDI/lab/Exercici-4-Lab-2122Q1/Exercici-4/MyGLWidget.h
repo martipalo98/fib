@@ -13,5 +13,10 @@ class MyGLWidget : public LL4GLWidget {
 
   private:
     int printOglError(const char file[], int line, const char func[]);
+    void modelTransformPatricio();
+    glm::mat4 calculaPatricioTG();
+    void iniEscena();
+
+    glm::vec3 patricioMov;
 
 };

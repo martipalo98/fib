@@ -54,19 +54,23 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event) {
   switch (event->key()) {
 
   case Qt::Key_Right:
-      //...
+    if(patricioMov.x <= radiEsc)
+      patricioMov.x += 1;
     break;
 
   case Qt::Key_Left:
-      //...
+    if(patricioMov.x > 1)
+      patricioMov.x -= 1;
     break;
 
   case Qt::Key_Up:
-      //...
+    if(patricioMov.z > 1)
+      patricioMov.z -= 1;
     break;
 
   case Qt::Key_Down:
-      //...
+    if(patricioMov.z <= radiEsc)
+      patricioMov.z += 1;
     break;
 
   case Qt::Key_R:
@@ -88,4 +92,26 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event) {
   default: LL4GLWidget::keyPressEvent(event); break;
   }
   update();
+}
+
+void MyGLWidget::iniEscena ()
+{
+  centreEsc = glm::vec3(5,3,5);
+  radiEsc = 8;
+  patricioMov = glm::vec3(5, 0, 2);
+}
+
+
+glm::mat4 MyGLWidget::calculaPatricioTG()
+{
+  glm::mat4 tg = glm::translate(glm::mat4(1.f), patricioMov);
+  tg = glm::scale(tg, glm::vec3(escala, escala, escala));
+  tg = glm::translate(tg, -centreBasePatr);
+  return tg;
+}
+
+void MyGLWidget::modelTransformPatricio ()
+{
+  patricioTG = calculaPatricioTG();  // Matriu de transformació
+  glUniformMatrix4fv (transLoc, 1, GL_FALSE, &patricioTG[0][0]);
 }
