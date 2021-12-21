@@ -10,16 +10,23 @@ class MyGLWidget : public LL4GLWidget {
 
   protected:
     virtual void keyPressEvent(QKeyEvent* event);
-    GLuint redLoc;
+    // uniform locations
+    GLuint llumVermellaLoc, llumVerdaLoc, llumBlavaLoc, llumNegraLoc, posicioMaLoc, rotacioLoc;
+    
 
   private:
     int printOglError(const char file[], int line, const char func[]);
     void modelTransformPatricio();
     glm::mat4 calculaPatricioTG();
+    glm::mat4 calculaMaPatricioTG();
+    void carregaShadersColors ();
+    void initializeGL();
     void iniEscena();
 
     glm::vec3 patricioMov;
 
-    float rotacioPatricio;
-
+    GLfloat rotacioPatricio;
+    bool cPushed, ePushed, pPushed;
+    glm::vec3 llumVerda, llumVermella, llumBlava, llumNegra, posicioMa;
+    glm::mat4 posicioRotacio;
 };

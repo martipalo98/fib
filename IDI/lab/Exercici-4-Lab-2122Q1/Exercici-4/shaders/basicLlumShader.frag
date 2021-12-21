@@ -7,13 +7,14 @@ in float fmatshin;
 in vec3  fvertex;
 in vec3  fnormal;
 
-const vec3 red  = vec3(0.9, 0.2, 0.2);
-const vec3 green= vec3(0.2, 0.9, 0.2);
-const vec3 blue = vec3(0.2, 0.2, 0.9);
+uniform vec3 red;
+uniform vec3 green;
+uniform vec3 blue;
+uniform mat4 posicioMa;
+uniform float rotacio;
 
-const vec3 llumAmbient = vec3(0.8, 0.2, 0.9);
-const vec3 focusCamera = vec3(8.0, 3.0, 2.0);
-const vec3 focusEscena = vec3(5.0, 3.0, 5.0);
+const vec3 llumAmbient = vec3(0.2, 0.2, 0.2);
+const vec3 focusEscena = vec3(8.0, 3.0, 2.0);
 
 uniform mat4 TG;
 uniform mat4 Proj;
@@ -57,40 +58,20 @@ vec3 Phong (vec3 NormSCO, vec3 L, vec3 vertSCO, vec3 colorFocus)
 
 void main()
 { 
+  vec4 focusMa = (View * TG * posicioMa[3]);
+  vec4 focusEscenaa = (View * vec4(focusEscena, 1));
 
-//NOU
-   mat3 NormalMatrix = transpose(inverse(mat3(View*TG)));//inverse(transpose(mat3(View * TG)));
-  // vec3 NormSCO = normalize(NormalMatrix * fnormal);
-  // vec3 VertSCO = View * TG * vec4(fvertex, 1);
-  vec3 normal= normalize(NormalMatrix * fnormal);
+  vec3 L1 = normalize(fnormal - fvertex);
+  vec3 L2 = normalize(focusEscenaa.xyz - fvertex);
+  vec3 L3 = normalize(focusMa.xyz - fvertex);
 
-  vec3 L = normalize(normal - fvertex.xyz); // Direccio llum  
-  vec3 NM = normalize(fnormal); 
-  
-  vec3 color = Phong(NM, L, vec4(vertexF, 1));
-  FragColor = vec4(color, 1);
+  vec3 fcolor = Ambient();
+  fcolor += Lambert(fnormal, L1, red);
+  fcolor += Lambert(fnormal, L2, green);
+  fcolor += Lambert(fnormal, L3, blue);
+  fcolor += Phong(fnormal, L1, fvertex, red);
+  fcolor += Phong(fnormal, L2, fvertex, green);
+  fcolor += Phong(fnormal, L3, fvertex, blue);
 
-  //focus càmera
-  //vec3 L         = NormalMatrix * VertSCO;
-  //vec3 Lxyz      = normalize(focus);
-                      // mat3 NormalMatrix = inverse(transpose(mat3(View * TG)));
-                      // vec3 L = normalize(NormalMatrix - fvertex.xyz);
-                      // vec3 color = Phong(fnormal, L, fvertex, red);
-                      // FragColor = vec4(color, 1);
-
-
-  // Dixar posicio del focus de llum en SCA
-  //vec3 L = normalize(fnormal - fvertex.xyz); // Direccio llum
-  //vec3 L = normalize(vec3(10, 10, 10) - vec3(5, 0, 5));
-  //vec3 NM = normalize(fnormal); 
-  
-  //vec3 color = Phong(NM, L, fvertex, vec3(0.9, 0.2, 0.2));
-  //FragColor = vec4(fcolor,1);
-  
-    //float ambientStrength = 0.1;
-    //vec3 ambient = ambientStrength * lightColor;
-
-    //vec3 result = Ambient * glm::vec3(0.5, 0.5, 0.5);
-    //FragColor = vec4(result, 1.0);
-    //FragColor = vec4(fmatdiff, 1);
+  FragColor = vec4(fcolor, 1);
 }
