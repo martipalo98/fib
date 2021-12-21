@@ -64,13 +64,11 @@ void main()
   // vec3 VertSCO = View * TG * vec4(fvertex, 1);
   vec3 normal= normalize(NormalMatrix * fnormal);
 
-  vec3 L      = normal - fvertex;
-  vec3 fcolor = Phong (fnormal, L.xyz, fvertex, red);
-	FragColor   = vec4(fcolor, 1);
-
-  vec3 L2      = focusEscena;
-  fcolor = Phong (fnormal, L.xyz, fvertex, red);
-	FragColor   = vec4(fcolor, 1);
+  vec3 L = normalize(normal - fvertex.xyz); // Direccio llum  
+  vec3 NM = normalize(fnormal); 
+  
+  vec3 color = Phong(NM, L, vec4(vertexF, 1));
+  FragColor = vec4(color, 1);
 
   //focus càmera
   //vec3 L         = NormalMatrix * VertSCO;
