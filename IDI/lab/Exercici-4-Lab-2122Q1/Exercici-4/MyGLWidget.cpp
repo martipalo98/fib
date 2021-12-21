@@ -3,7 +3,7 @@
 #include <iostream>
 #include <stdio.h>
 
-#define printOpenGLError() printOglError(__FILE__, __LINE__)
+#define printOpenGLError() print  OglError(__FILE__, __LINE__)
 #define CHECK() printOglError(__FILE__, __LINE__,__FUNCTION__)
 #define DEBUG() std::cout << __FILE__ << " " << __LINE__ << " " << __FUNCTION__ << std::endl;
 
@@ -74,7 +74,7 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event) {
     break;
 
   case Qt::Key_R:
-      //...
+    rotacioPatricio += 45.;
     break;
 
   case Qt::Key_C:
@@ -99,6 +99,7 @@ void MyGLWidget::iniEscena ()
   centreEsc = glm::vec3(5,3,5);
   radiEsc = 8;
   patricioMov = glm::vec3(5, 0, 2);
+  rotacioPatricio = 0.;
 }
 
 
@@ -106,6 +107,7 @@ glm::mat4 MyGLWidget::calculaPatricioTG()
 {
   glm::mat4 tg = glm::translate(glm::mat4(1.f), patricioMov);
   tg = glm::scale(tg, glm::vec3(escala, escala, escala));
+  tg = glm::rotate(tg, glm::radians(rotacioPatricio) ,glm::vec3(0, 1, 0));
   tg = glm::translate(tg, -centreBasePatr);
   return tg;
 }
@@ -115,3 +117,4 @@ void MyGLWidget::modelTransformPatricio ()
   patricioTG = calculaPatricioTG();  // Matriu de transformació
   glUniformMatrix4fv (transLoc, 1, GL_FALSE, &patricioTG[0][0]);
 }
+

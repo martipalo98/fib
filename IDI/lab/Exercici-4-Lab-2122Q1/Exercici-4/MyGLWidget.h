@@ -10,6 +10,7 @@ class MyGLWidget : public LL4GLWidget {
 
   protected:
     virtual void keyPressEvent(QKeyEvent* event);
+    GLuint redLoc;
 
   private:
     int printOglError(const char file[], int line, const char func[]);
@@ -18,5 +19,7 @@ class MyGLWidget : public LL4GLWidget {
     void iniEscena();
 
     glm::vec3 patricioMov;
+
+    float rotacioPatricio;
 
 };
