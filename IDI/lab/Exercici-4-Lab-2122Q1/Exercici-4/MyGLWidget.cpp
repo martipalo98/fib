@@ -137,7 +137,7 @@ void MyGLWidget::iniEscena ()
   radiEsc = 8;
   patricioMov = glm::vec3(5, 0, 2);
   rotacioPatricio = 0.;
-  cPushed = ePushed = pPushed = false;
+  cPushed = ePushed = pPushed = true;
 }
 
 
