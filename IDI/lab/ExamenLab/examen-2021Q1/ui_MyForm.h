@@ -46,6 +46,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
         widget->setSizePolicy(sizePolicy);
+        widget->setContextMenuPolicy(Qt::ActionsContextMenu);
 
         horizontalLayout->addWidget(widget);
 

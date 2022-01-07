@@ -184,7 +184,9 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event) {
     llumBlanca = true;
     angleTecles = 0.;
     colFoc = glm::vec3(1,1,1);
+    camPlanta = false;
     enviaColFocus();
+    projectTransform();
     viewTransform();
     break;
 	}
@@ -208,6 +210,7 @@ void MyGLWidget::posPat3() {
 }
 
 void MyGLWidget::canviaCamera() {
+  makeCurrent();
   camPlanta = !camPlanta;
   viewTransform();
   projectTransform();
