@@ -15,7 +15,9 @@ class MyGLWidget:public ExamGLWidget
     virtual void modelTransformPatricio ();
     virtual void projectTransform ();
     virtual void viewTransform ();
-
+    virtual void posPat1();
+    virtual void posPat2();
+    virtual void posPat3();
   private:
     int printOglError(const char file[], int line, const char func[]);
     int mostraPat = false;

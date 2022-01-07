@@ -134,15 +134,15 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event) {
     break;
 	}
   case Qt::Key_1: {
-    posPat = 0;
+    posPat1();
     break;
 	}
   case Qt::Key_2: {
-    posPat = 2;
+    posPat2();
     break;
 	}
   case Qt::Key_3: {
-    posPat = 4;
+    posPat3();
     break;
 	}
   case Qt::Key_F: {
@@ -175,3 +175,17 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event) {
   update();
 }
 
+virtual void MyGLWidget::posPat1() {
+    posPat = 0;
+
+}
+
+virtual void MyGLWidget::posPat2() {
+    posPat = 2;
+  
+}
+
+virtual void MyGLWidget::posPat3() {
+    posPat = 4;
+  
+}
