@@ -27,6 +27,33 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="botoCanviCamera">
+       <property name="text">
+        <string>Canviar Càmera</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="botoMourePatricio">
+       <property name="text">
+        <string>Moure Patricio</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -62,6 +89,10 @@
    <extends>QWidget</extends>
    <header>MyGLWidget.h</header>
    <container>1</container>
+   <slots>
+    <slot>mocPatricio()</slot>
+    <slot>canviaCamera()</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>
@@ -73,12 +104,44 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>796</x>
-     <y>596</y>
+     <x>776</x>
+     <y>718</y>
     </hint>
     <hint type="destinationlabel">
      <x>839</x>
      <y>529</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>botoMourePatricio</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>mocPatricio()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>754</x>
+     <y>371</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>610</x>
+     <y>380</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>botoCanviCamera</sender>
+   <signal>clicked()</signal>
+   <receiver>widget</receiver>
+   <slot>canviaCamera()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>760</x>
+     <y>322</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>587</x>
+     <y>240</y>
     </hint>
    </hints>
   </connection>

@@ -15,12 +15,20 @@ class MyGLWidget:public ExamGLWidget
     virtual void modelTransformPatricio ();
     virtual void projectTransform ();
     virtual void viewTransform ();
-    virtual void posPat1();
-    virtual void posPat2();
-    virtual void posPat3();
+    
+
   private:
     int printOglError(const char file[], int line, const char func[]);
     int mostraPat = false;
     int posPat = 0;
     bool llumBlanca = true;
+    float angleTecles = 0.;
+    void posPat1();
+    void posPat2();
+    void posPat3();
+
+  private slots:
+    void mocPatricio();
+    void canviaCamera();
+
 };

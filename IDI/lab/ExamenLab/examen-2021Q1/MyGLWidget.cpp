@@ -89,7 +89,7 @@ void MyGLWidget::modelTransformCub (float escala, float angle)
   // En aquest mètode has de substituir aquest codi per construir la 
   // transformació geomètrica (TG) del cub usant els paràmetres adientment
   TG = glm::mat4(1.f);
-  TG = glm::rotate(TG, angle, glm::vec3(0, 1, 0));
+  TG = glm::rotate(TG, angle+angleTecles, glm::vec3(0, 1, 0));
   TG = glm::translate(TG, glm::vec3(5, 0, 0));
   TG = glm::scale(TG, glm::vec3(2*escala, 2*escala, 2*escala));
   glUniformMatrix4fv (transLoc, 1, GL_FALSE, &TG[0][0]);
@@ -98,7 +98,7 @@ void MyGLWidget::modelTransformCub (float escala, float angle)
 void MyGLWidget::modelTransformPatricio ()    // Mètode que has de modificar
 {
   TG = glm::mat4(1.f);
-  TG = glm::rotate(TG, float(posPat*M_PI/3), glm::vec3(0, 1, 0));
+  TG = glm::rotate(TG, float(posPat*M_PI/3) + angleTecles, glm::vec3(0, 1, 0));
   TG = glm::translate(TG, glm::vec3(5, 0, 0));
   TG = glm::rotate(TG, float(-M_PI/2), glm::vec3(0, 1, 0));
   TG = glm::scale(TG, glm::vec3 (2*escala, 2*escala, 2*escala));
@@ -112,7 +112,11 @@ void MyGLWidget::viewTransform ()    // Mètode que has de modificar
     ExamGLWidget::viewTransform();
   else
   {
-    // Codi per a la viewMatrix de la Càmera-2
+    glm::vec3 obs = glm::vec3(centreEsc[0], 2*radiEsc, centreEsc[2]);
+    glm::vec3 vrp = centreEsc;
+    glm::vec3 up = glm::vec3(1., 0., 0.);
+    View = glm::lookAt(obs, vrp, up);
+    glUniformMatrix4fv (viewLoc, 1, GL_FALSE, &View[0][0]);
   }
 }
 
@@ -122,7 +126,15 @@ void MyGLWidget::projectTransform ()
     ExamGLWidget::projectTransform();
   else
   {
-    // Codi per a la projectMatrix de la Càmera-2
+    glm::mat4 Proj;  // Matriu de projecció
+    float l,r,b,t;
+    l = -radiEsc;
+    r = radiEsc;
+    b = -radiEsc;
+    t = radiEsc;
+    Proj = glm::ortho(l, r, b, t, zn, zf);
+
+    glUniformMatrix4fv (projLoc, 1, GL_FALSE, &Proj[0][0]);
   }
 }
 
@@ -153,21 +165,27 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event) {
     break;
 	}
   case Qt::Key_C: {
-      // ...
+    canviaCamera();
     break;
 	}
   case Qt::Key_Right: {
-      // ...
+    angleTecles += 2*M_PI/3;
     break;
 	}
   case Qt::Key_Left: {
-      // ...
+    angleTecles -= 2*M_PI/3;
     break;
 	}
   case Qt::Key_R: {
+    angleY = 0.65;
+    angleX = -1.2;
     mostraPat = false;
     posPat = 0;
     llumBlanca = true;
+    angleTecles = 0.;
+    colFoc = glm::vec3(1,1,1);
+    enviaColFocus();
+    viewTransform();
     break;
 	}
   default: ExamGLWidget::keyPressEvent(event); break;
@@ -175,17 +193,30 @@ void MyGLWidget::keyPressEvent(QKeyEvent* event) {
   update();
 }
 
-virtual void MyGLWidget::posPat1() {
-    posPat = 0;
-
+void MyGLWidget::posPat1() {
+  posPat = 0;
 }
 
-virtual void MyGLWidget::posPat2() {
-    posPat = 2;
+void MyGLWidget::posPat2() {
+  posPat = 2;
   
 }
 
-virtual void MyGLWidget::posPat3() {
-    posPat = 4;
+void MyGLWidget::posPat3() {
+  posPat = 4;
   
+}
+
+void MyGLWidget::canviaCamera() {
+  camPlanta = !camPlanta;
+  viewTransform();
+  projectTransform();
+  update();
+}
+
+void MyGLWidget::mocPatricio() {
+  if(posPat == 0) posPat = 2;
+  else if(posPat == 2) posPat = 4;
+  else posPat = 0;
+  update();
 }

@@ -26,6 +26,9 @@ public:
     QHBoxLayout *horizontalLayout;
     MyGLWidget *widget;
     QVBoxLayout *verticalLayout;
+    QSpacerItem *verticalSpacer_2;
+    QPushButton *botoCanviCamera;
+    QPushButton *botoMourePatricio;
     QSpacerItem *verticalSpacer;
     QPushButton *pushButton;
 
@@ -48,6 +51,20 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_2);
+
+        botoCanviCamera = new QPushButton(MyForm);
+        botoCanviCamera->setObjectName(QString::fromUtf8("botoCanviCamera"));
+
+        verticalLayout->addWidget(botoCanviCamera);
+
+        botoMourePatricio = new QPushButton(MyForm);
+        botoMourePatricio->setObjectName(QString::fromUtf8("botoMourePatricio"));
+
+        verticalLayout->addWidget(botoMourePatricio);
+
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
@@ -68,6 +85,8 @@ public:
 
         retranslateUi(MyForm);
         QObject::connect(pushButton, SIGNAL(clicked()), MyForm, SLOT(close()));
+        QObject::connect(botoMourePatricio, SIGNAL(clicked()), widget, SLOT(mocPatricio()));
+        QObject::connect(botoCanviCamera, SIGNAL(clicked()), widget, SLOT(canviaCamera()));
 
         QMetaObject::connectSlotsByName(MyForm);
     } // setupUi
@@ -75,6 +94,8 @@ public:
     void retranslateUi(QWidget *MyForm)
     {
         MyForm->setWindowTitle(QApplication::translate("MyForm", "IDI-Lab", nullptr));
+        botoCanviCamera->setText(QApplication::translate("MyForm", "Canviar C\303\240mera", nullptr));
+        botoMourePatricio->setText(QApplication::translate("MyForm", "Moure Patricio", nullptr));
         pushButton->setText(QApplication::translate("MyForm", "&Sortir", nullptr));
     } // retranslateUi
 
