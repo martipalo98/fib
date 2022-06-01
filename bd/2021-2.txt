@@ -1,0 +1,10 @@
+1) SELECT nomAssig FROM assignatures at
+WHERE NOT EXISTS ( SELECT * FROM assignacions an WHERE an.nomAssig = at.nomAssig AND horesAssig > 3 
+			AND quadrimestre <> '2020-2');
+
+2)	A = assignacions(horesAssig<5)
+	B = A*assignatures
+	C = B{codiDept->codiDeptA, profResponsable->idProf}
+	D = C*professors
+	E = D(codiDept <> codiDeptA)
+	R = E[idProf, nomProf]

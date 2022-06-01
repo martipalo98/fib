@@ -1,0 +1,52 @@
+1)  Hacer "inlining" de una función significa marcar la función como "inline".
+    Esto hará que ésta función no se ejecute en el código original. sinó que se inserta su código dónde es llamada para mejorar el rendimiento, aunque se puede incrementar mucho el tamaño del fichero.
+
+2)  La opción "-finline-small-functions" hace un inlining de todas las funciones que tengan un número de instrucciones pequeño, y esto lo calcula heurísticamente el compilador.
+    Se puede establecer éste tamaño con la opción "-finline-limit=n", siendo n el número de pseudoinsrucciones a las que se les puede hacer inline.
+
+3)  Podemos hacer "grep -lrw Pedrito", y nos saldría una lista de ficheros que contienen la palabra Pedrito.
+    Si queremos saber si es invocada, podríamos hacerlo con "grep -lrw Pedrito(" & "grep -lrw Pedrito (".
+
+4)  Tiene 5 instrucciones estáticas y 5.000.000 de instrucciones dinámicas (5*1.000.000).
+    Si tarda 10ms y tiene 15.000.000 de ciclos:
+        MIPS = 416
+        IPC = 0,33
+        CPI = 3
+        f = 1.25 GHz
+
+5)  Tiene 4 instrucciones estáticas y 4.000.000 de instrucciones dinámicas (4*1.000.000).
+    Si tarda 4 ms y tiene 5.000.000 de ciclos:
+        MIPS = 1000
+        CPI = 1,25
+        f = 1.25 GHz
+        SpeedUp = 10/4 = 2,5
+
+    Como tienen diferente número de instrucciones y diferente tiempo de ejecución, el MIPS y el CPI cambiará.
+    Pero como tienen la misma proporción de número de ciclos con tiempo de ejecución, su frecuencia no cambia.
+
+    
+6)  Si el código es instantáneo = 1/(1-fm) = 1/(1-5*10^-3) = 1.00502
+    Si se compila con -O: 1 / (1-fm-(fm/gm)) = 1 / (1-200*10^-3-(200*10^-3/5*10^-3)) = 1.25
+
+7)  Podríamos usar la librería "cycle.h" para la función getticks() y implementar GetTicks() para calcular el número de ciclos y el tiempo de ejecución.
+    Luego calculamos:
+    MIPS =  #instr / (Texe*10^6)
+    IPC = #instr. dinámicas / #ciclos
+
+8)  Dadas 5 ejecuciones de 10ms, 8ms, 13ms, 8ms y 2ms. Su media:
+    n=5
+    suma = 10+8+13+8+2 = 41
+    mult = 10*8*13*8*2 = 16640
+    Geométrica = pow(mult, 1n) = 6.986
+    Aritmética = suma/n = 8.2
+    
+    Descartando los valores extremos:
+    n=4
+    suma = 10+8+13+8 = 39
+    mult = 10*8*13*8 = 8320
+    Geométrica = pow(mult, 1/n) = 9.5506
+    Aritmética = suma/n = 9.75
+
+    Hay mucha diferencia entre Geométrica y Aritmética sin descartar los datos extremos.
+    Cuando se normaliza, ambos resultado son más parecidos.
+

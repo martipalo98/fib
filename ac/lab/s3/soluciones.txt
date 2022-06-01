@@ -1,0 +1,4 @@
+
+PROGRAMA B: CPI: 0,2336
+      instrucciones: 96.217000
+      ciclos: 22476060 
